@@ -1,4 +1,5 @@
-const themeSelector = document.querySelector(".theme-style");
+const themes = document.querySelectorAll("input[type=radio]");
+const body = document.querySelector('body');
 const theme1 = document.querySelector("#theme1");
 const theme2 = document.querySelector("#theme2");
 const theme3 = document.querySelector("#theme3");
@@ -14,16 +15,24 @@ let calculator ={
 };
 
 // Change theme
-theme1.addEventListener("click", () => {
-     themeSelector.setAttribute("href", "styles/style1/style1.css");
+themes.forEach(theme => {
+    theme.addEventListener('change', changeTheme)
 });
 
-theme2.addEventListener("click", () => {
-    themeSelector.setAttribute("href", "styles/style2/style2.css");
-});
-theme3.addEventListener("click", () => {
-     themeSelector.setAttribute("href", "styles/style3/style3.css");
-});
+function changeTheme(e) {
+    const clicked = e.target.id;
+    console.log(clicked);
+    if (clicked == "theme1") {
+        body.classList.remove("theme2", "theme3");
+        body.classList.add('theme1')
+    } else if (clicked == "theme2") {
+        body.classList.remove("theme3", 'theme1');
+        body.classList.add("theme2");
+    } else if (clicked == "theme3") {
+        body.classList.remove("theme2", 'theme1');
+        body.classList.add("theme3");
+    }
+}
 
 
 
@@ -91,7 +100,7 @@ buttons.addEventListener('click', event => {
 
 
 
-    // Allows keypress to work with the calculator
+// Allows keypress to work with the calculator 
 document.addEventListener("keydown", function(button){
     var pressedButton = button.key;
     switch (pressedButton) {
