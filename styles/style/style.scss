@@ -38,6 +38,7 @@ $text-3: hsl(52, 100%, 62%);
 * {
   box-sizing: border-box;
   margin: 0;
+  touch-action: manipulation;
 }
 
 .sr-only {
