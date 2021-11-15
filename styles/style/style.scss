@@ -60,6 +60,9 @@ main {
   max-width: 600px;
   margin: auto;
 }
+body{
+  max-height: 100vh;
+}
 
 input[type="radio"] {
   cursor: pointer;
